@@ -1,0 +1,16 @@
+# Python avançado - Recomendações de ações da B3 - WIP
+import time
+import pandas as pd
+from selenium import webdriver
+
+options = webdriver.ChromeOptions()
+
+prefs = {"download.default_directory":"/home/tiago/workspace/python/python-workspace/yahoo-finace"}
+        
+options.add_experimental_option("prefs",prefs)
+driver = webdriver.Chrome(executable_path='/home/tiago/apps/chromedriver_linux64/chromedriver', chrome_options=options)
+driver.get ("https://sistemaswebb3-listados.b3.com.br/indexPage/day/IBOV?language%=pt-br")
+btn_download=driver.find_element_by_partial_link_text('Download')
+btn_download.click()
+time.sleep(3)
+driver.close()
